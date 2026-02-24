@@ -11,5 +11,4 @@ export default function globalSetup() {
 
   const fixtureData = fs.readFileSync(fixturePath, 'utf-8');
   fs.writeFileSync(dbPath, fixtureData, 'utf-8');
-  console.log('[globalSetup] db.json reset to fixture');
 }

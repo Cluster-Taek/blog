@@ -5,9 +5,9 @@ import { type Metadata } from 'next';
 import localFont from 'next/font/local';
 import { CoreProvider, MODAL_COMPONENTS } from '@/app';
 import { Modal } from '@/features/modal';
+import { cn } from '@/shared/lib/utils';
 import { ThemeProvider } from '@/shared/ui/theme-provider';
 import { Footer } from '@/widgets/footer';
-import { cn } from '@/shared/lib/utils';
 
 dayjs.locale('ko');
 
