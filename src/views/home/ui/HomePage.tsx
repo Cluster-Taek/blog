@@ -8,7 +8,7 @@ export async function HomePage() {
   return (
     <div className="flex w-full flex-col items-center justify-center h-full p-4">
       <div className="ml-auto text-xl">Hello {session.user.name}!</div>
-      <Link className="text-primary-01 hover:text-primary-02" href="/users">
+      <Link className="text-primary underline underline-offset-4 hover:text-primary/80" href="/users">
         Go to Users
       </Link>
       <LogoutButton />

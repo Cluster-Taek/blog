@@ -66,6 +66,7 @@
     "@feature-sliced/steiger-plugin": "^0.5.7",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4.2.0",
+    "@tailwindcss/typography": "^0.5.19",
     "@tanstack/react-query-devtools": "^5.91.3",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",

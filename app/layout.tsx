@@ -5,7 +5,9 @@ import { type Metadata } from 'next';
 import localFont from 'next/font/local';
 import { CoreProvider, MODAL_COMPONENTS } from '@/app';
 import { Modal } from '@/features/modal';
+import { ThemeProvider } from '@/shared/ui/theme-provider';
 import { Footer } from '@/widgets/footer';
+import { cn } from '@/shared/lib/utils';
 
 dayjs.locale('ko');
 
@@ -26,16 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${pretendard.className} font-sans`}
-        style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
-      >
-        <CoreProvider>
-          <main style={{ flex: 1 }}>{children}</main>
-          <Footer />
-          <Modal components={MODAL_COMPONENTS} />
-        </CoreProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn('min-h-screen bg-background font-sans antialiased', pretendard.variable)}>
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <CoreProvider>
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <Modal components={MODAL_COMPONENTS} />
+          </CoreProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

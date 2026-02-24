@@ -49,7 +49,7 @@ export const Modal = ({ components }: ModalProps) => {
             key={`${modalId}-${index}`}
           >
             <div
-              className="fixed top-0 left-0 w-screen h-screen overflow-hidden bg-black opacity-48"
+              className="fixed top-0 left-0 w-screen h-screen overflow-hidden bg-foreground/48"
               onClick={() => closeModal(modalId)}
             />
             <motion.div className="relative" {...MOTION.POP}>
