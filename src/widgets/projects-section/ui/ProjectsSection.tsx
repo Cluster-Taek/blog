@@ -1,6 +1,6 @@
+import { DATA } from '@/shared/config';
 import { BlurFade } from '@/shared/ui/blur-fade';
 import { ProjectCard } from '@/shared/ui/project-card';
-import { DATA } from '@/shared/config';
 
 const BLUR_FADE_DELAY = 0.04;
 

@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import  { type ComponentProps } from 'react';
 import { CodeBlock } from './code-block';
 import { MediaContainer } from './media-container';
 

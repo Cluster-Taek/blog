@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { allPosts } from 'content-collections';
 import { MDXContent } from '@content-collections/mdx/react';
+import { allPosts } from 'content-collections';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import  { type Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { DATA } from '@/shared/config';
 import { formatDate } from '@/shared/lib/utils';
 import { mdxComponents } from '@/shared/ui/mdx/mdx-components';

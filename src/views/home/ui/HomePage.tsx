@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
-import { ArrowUpRight } from 'lucide-react';
+import { DATA } from '@/shared/config';
 import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
 import { BlurFade } from '@/shared/ui/blur-fade';
 import { BlurFadeText } from '@/shared/ui/blur-fade-text';
-import { DATA } from '@/shared/config';
 import { ContactSection } from '@/widgets/contact-section';
 import { HackathonsSection } from '@/widgets/hackathons-section';
 import { ProjectsSection } from '@/widgets/projects-section';

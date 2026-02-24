@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
-import { Badge } from '@/shared/ui/badge';
 import { DATA } from '@/shared/config';
+import { Badge } from '@/shared/ui/badge';
 import { Timeline, TimelineItem, TimelineConnectItem } from '@/shared/ui/timeline';
 
 export default function HackathonsSection() {

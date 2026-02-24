@@ -1,6 +1,13 @@
+interface MdastNode {
+  type: string;
+  meta?: string;
+  data?: { hProperties?: Record<string, string> };
+  children?: MdastNode[];
+}
+
 export function remarkCodeMeta() {
-  return (tree: any) => {
-    const walk = (node: any) => {
+  return (tree: MdastNode) => {
+    const walk = (node: MdastNode) => {
       if (!node || typeof node !== 'object') return;
 
       if (node.type === 'code') {

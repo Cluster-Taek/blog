@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react';
+import  { type SVGProps } from 'react';
 
 export const ReactLight = (props: SVGProps<SVGSVGElement>) => (
   <svg {...props} viewBox="0 0 569 512" xmlnsXlink="http://www.w3.org/1999/xlink">

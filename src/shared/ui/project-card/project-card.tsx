@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
 import Markdown from 'react-markdown';
 import { cn } from '@/shared/lib/utils';
 import { Badge } from '@/shared/ui/badge';

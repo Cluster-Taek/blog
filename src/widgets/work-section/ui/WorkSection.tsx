@@ -1,11 +1,11 @@
 'use client';
 
 /* eslint-disable @next/next/no-img-element */
-import { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/ui/accordion';
+import { useState } from 'react';
 import { DATA } from '@/shared/config';
 import { cn } from '@/shared/lib/utils';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/ui/accordion';
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);

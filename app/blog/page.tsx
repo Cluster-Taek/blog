@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import type { Metadata } from 'next';
-import { ChevronRight } from 'lucide-react';
 import { allPosts } from 'content-collections';
-import { BlurFade } from '@/shared/ui/blur-fade';
+import { ChevronRight } from 'lucide-react';
+import  { type Metadata } from 'next';
+import Link from 'next/link';
 import { paginate, normalizePage } from '@/shared/lib/pagination';
+import { BlurFade } from '@/shared/ui/blur-fade';
 
 export const metadata: Metadata = {
   title: 'Blog',

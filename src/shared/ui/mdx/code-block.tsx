@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef, useEffect, type ComponentProps } from 'react';
 import { Copy, Check } from 'lucide-react';
+import { useState, useRef, useEffect, type ComponentProps } from 'react';
 import { codeToHtml } from 'shiki/bundle/web';
 import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
@@ -34,7 +34,7 @@ export function CodeBlock({ children, ...props }: CodeBlockProps) {
     const nextClassName = codeEl.className || '';
 
     void codeToHtml(codeText, {
-      lang: lang as any,
+      lang: lang as Parameters<typeof codeToHtml>[1]['lang'],
       themes: {
         light: 'github-light',
         dark: 'github-dark',

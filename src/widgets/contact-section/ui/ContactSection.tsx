@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { FlickeringGrid } from '@/shared/ui/flickering-grid';
 import { DATA } from '@/shared/config';
+import { FlickeringGrid } from '@/shared/ui/flickering-grid';
 
 export default function ContactSection() {
   return (
