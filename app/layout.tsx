@@ -6,8 +6,8 @@ import localFont from 'next/font/local';
 import { CoreProvider, MODAL_COMPONENTS } from '@/app';
 import { Modal } from '@/features/modal';
 import { cn } from '@/shared/lib/utils';
-import { ThemeProvider } from '@/shared/ui/theme-provider';
-import { Footer } from '@/widgets/footer';
+import { FlickeringGrid } from '@/shared/ui/flickering-grid';
+import { Navbar } from '@/widgets/navbar';
 
 dayjs.locale('ko');
 
@@ -29,14 +29,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('min-h-screen bg-background font-sans antialiased', pretendard.variable)}>
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <CoreProvider>
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <Modal components={MODAL_COMPONENTS} />
-          </CoreProvider>
-        </ThemeProvider>
+      <body className={cn('min-h-screen bg-background font-sans antialiased relative', pretendard.variable)}>
+        <CoreProvider>
+          <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
+            <FlickeringGrid
+              className="h-full w-full"
+              squareSize={2}
+              gridGap={2}
+              style={{
+                maskImage: 'linear-gradient(to bottom, black, transparent)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)',
+              }}
+            />
+          </div>
+          <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">{children}</div>
+          <Modal components={MODAL_COMPONENTS} />
+          <Navbar />
+        </CoreProvider>
       </body>
     </html>
   );
