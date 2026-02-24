@@ -36,7 +36,7 @@ export const LoginForm = () => {
             <input type="text" {...field} className="w-full my-2 p-2 rounded-md border" placeholder="email" />
           )}
         />
-        {formState.errors.login && <div className="text-red-500">{formState.errors.login.message}</div>}
+        {formState.errors.login && <div className="text-destructive">{formState.errors.login.message}</div>}
         <Controller
           control={control}
           name="password"
@@ -44,12 +44,12 @@ export const LoginForm = () => {
             <input type="password" {...field} className="w-full my-2 p-2 rounded-md border" placeholder="password" />
           )}
         />
-        {formState.errors.password && <div className="text-red-500">{formState.errors.password.message}</div>}
+        {formState.errors.password && <div className="text-destructive">{formState.errors.password.message}</div>}
         <Button type="submit">Submit</Button>
       </form>
       {searchParams.get('error') === 'CredentialsSignin' && (
         <div>
-          <div className="text-red-500">Invalid email or password</div>
+          <div className="text-destructive">Invalid email or password</div>
         </div>
       )}
     </div>

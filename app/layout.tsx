@@ -5,7 +5,9 @@ import { type Metadata } from 'next';
 import localFont from 'next/font/local';
 import { CoreProvider, MODAL_COMPONENTS } from '@/app';
 import { Modal } from '@/features/modal';
-import { Footer } from '@/widgets/footer';
+import { cn } from '@/shared/lib/utils';
+import { FlickeringGrid } from '@/shared/ui/flickering-grid';
+import { Navbar } from '@/widgets/navbar';
 
 dayjs.locale('ko');
 
@@ -26,15 +28,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${pretendard.className} font-sans`}
-        style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
-      >
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn('min-h-screen bg-background font-sans antialiased relative', pretendard.variable)}>
         <CoreProvider>
-          <main style={{ flex: 1 }}>{children}</main>
-          <Footer />
+          <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
+            <FlickeringGrid
+              className="h-full w-full"
+              squareSize={2}
+              gridGap={2}
+              style={{
+                maskImage: 'linear-gradient(to bottom, black, transparent)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)',
+              }}
+            />
+          </div>
+          <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">{children}</div>
           <Modal components={MODAL_COMPONENTS} />
+          <Navbar />
         </CoreProvider>
       </body>
     </html>

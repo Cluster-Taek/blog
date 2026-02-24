@@ -12,16 +12,18 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="w-full border-t border-gray-200 bg-gray-50 mt-auto">
+    <div className="w-full border-t border-border bg-muted/50 mt-auto">
       <div className="max-w-[1200px] mx-auto p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div className="text-sm text-gray-600">© {currentYear} Next.js Boilerplate. All rights reserved.</div>
+        <div className="text-sm text-muted-foreground">
+          © {currentYear} Next.js Boilerplate. All rights reserved.
+        </div>
 
         <div className="flex gap-6">
           <Link
             href="https://nextjs.org"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-gray-600 transition-colors hover:text-primary-01"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             Next.js
           </Link>
@@ -29,7 +31,7 @@ export const Footer = () => {
             href="https://feature-sliced.design"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-gray-600 transition-colors hover:text-primary-01"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             Feature-Sliced Design
           </Link>
@@ -37,7 +39,7 @@ export const Footer = () => {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-gray-600 transition-colors hover:text-primary-01"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             GitHub
           </Link>

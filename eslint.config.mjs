@@ -130,6 +130,7 @@ const eslintConfig = defineConfig([
   // 무시할 파일
   globalIgnores([
     '.next/**',
+    '.content-collections/**',
     'node_modules/**',
     'out/**',
     'build/**',

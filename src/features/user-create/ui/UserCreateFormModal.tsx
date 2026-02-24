@@ -39,13 +39,13 @@ export const UserCreateFormModal = ({ onClose }: UserCreateFormModalProps) => {
   });
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center rounded-md shadow-md p-4 w-sm mx-auto bg-white">
+    <form onSubmit={handleSubmit} className="flex flex-col items-center rounded-md shadow-md p-4 w-sm mx-auto bg-card text-card-foreground">
       <Controller
         control={control}
         name="name"
         render={({ field }) => <input type="text" {...field} className="w-full p-2 mt-2" placeholder="name" />}
       />
-      {formState.errors.name && <div className="text-red-500 mt-2">{formState.errors.name.message}</div>}
+      {formState.errors.name && <div className="text-destructive mt-2">{formState.errors.name.message}</div>}
       <Button type="submit">Submit</Button>
     </form>
   );
