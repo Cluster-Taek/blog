@@ -1,17 +1,22 @@
 'use client';
 
 /* eslint-disable @next/next/no-img-element */
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { Building2, ChevronDown, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { DATA } from '@/shared/config';
 import { cn } from '@/shared/lib/utils';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/ui/accordion';
+import { Badge } from '@/shared/ui/badge';
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
 
   if (!src || imageError) {
-    return <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />;
+    return (
+      <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none flex items-center justify-center">
+        <Building2 className="size-4 md:size-5 text-muted-foreground" />
+      </div>
+    );
   }
 
   return (
@@ -36,6 +41,11 @@ export default function WorkSection() {
                 <div className="flex-1 min-w-0 gap-0.5 flex flex-col">
                   <div className="font-semibold leading-none flex items-center gap-2">
                     {work.company}
+                    {work.badges.map((badge) => (
+                      <Badge key={badge} variant="secondary" className="text-[10px] px-1.5 py-0 h-4 font-normal">
+                        {badge}
+                      </Badge>
+                    ))}
                     <span className="relative inline-flex items-center w-3.5 h-3.5">
                       <ChevronRight
                         className={cn(

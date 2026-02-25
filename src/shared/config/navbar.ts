@@ -9,13 +9,13 @@ export const NAVBAR_ITEMS = [
 export const SOCIAL_LINKS = {
   GitHub: {
     name: 'GitHub',
-    url: 'https://github.com',
+    url: 'https://github.com/Cluster-Taek',
     icon: Icons.github,
     navbar: true,
   },
   LinkedIn: {
     name: 'LinkedIn',
-    url: 'https://linkedin.com',
+    url: 'https://www.linkedin.com/in/seungtaek-yoo-47473820b/',
     icon: Icons.linkedin,
     navbar: true,
   },

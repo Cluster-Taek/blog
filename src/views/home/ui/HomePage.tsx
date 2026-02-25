@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
 import { DATA } from '@/shared/config';
@@ -7,7 +7,6 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
 import { BlurFade } from '@/shared/ui/blur-fade';
 import { BlurFadeText } from '@/shared/ui/blur-fade-text';
 import { ContactSection } from '@/widgets/contact-section';
-import { HackathonsSection } from '@/widgets/hackathons-section';
 import { ProjectsSection } from '@/widgets/projects-section';
 import { WorkSection } from '@/widgets/work-section';
 
@@ -85,7 +84,9 @@ export function HomePage() {
                         className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
                       />
                     ) : (
-                      <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
+                      <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none flex items-center justify-center">
+                        <GraduationCap className="size-4 md:size-5 text-muted-foreground" />
+                      </div>
                     )}
                     <div className="flex-1 min-w-0 flex flex-col gap-0.5">
                       <div className="font-semibold leading-none flex items-center gap-2">
@@ -131,13 +132,8 @@ export function HomePage() {
           <ProjectsSection />
         </BlurFade>
       </section>
-      <section id="hackathons">
-        <BlurFade delay={BLUR_FADE_DELAY * 13}>
-          <HackathonsSection />
-        </BlurFade>
-      </section>
       <section id="contact">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+        <BlurFade delay={BLUR_FADE_DELAY * 13}>
           <ContactSection />
         </BlurFade>
       </section>

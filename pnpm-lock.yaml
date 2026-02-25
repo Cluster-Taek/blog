@@ -47,6 +47,9 @@ dependencies:
   dayjs:
     specifier: ^1.11.19
     version: 1.11.19
+  developer-icons:
+    specifier: ^6.0.5
+    version: 6.0.5(react-dom@19.2.4)(react@19.2.4)
   jwt-decode:
     specifier: ^4.0.0
     version: 4.0.0
@@ -4546,6 +4549,16 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /developer-icons@6.0.5(react-dom@19.2.4)(react@19.2.4):
+    resolution: {integrity: sha512-piWJLHi65c/IQZYePqpW8L7RkKZPHi+r7HU2lmtFbvIMFHWef0dyu7RP8dHSqhSSOmImFqrP43cSsJBZbJ9z5g==}
+    peerDependencies:
+      react: ^18.2.0 || ^19.0.0
+      react-dom: ^18.2.0 || ^19.0.0
+    dependencies:
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+    dev: false
 
   /devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
