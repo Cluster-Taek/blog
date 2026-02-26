@@ -2,7 +2,7 @@
 export { cn } from './cn';
 
 // Date utilities
-export { formatDate } from './date';
+export { formatDate, getDuration } from './date';
 
 // Format utilities
 export { getHypenNumber, getOnlyNumber } from './format';

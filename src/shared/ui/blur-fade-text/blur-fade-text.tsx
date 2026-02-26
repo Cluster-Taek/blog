@@ -1,16 +1,13 @@
 'use client';
 
 import { motion, type Variants } from 'motion/react';
-import { useMemo } from 'react';
+import React from 'react';
 import { cn } from '@/shared/lib/utils';
 
 interface BlurFadeTextProps {
-  text: string;
+  children: React.ReactNode;
   className?: string;
-  variant?: {
-    hidden: { y: number };
-    visible: { y: number };
-  };
+  variant?: Variants;
   duration?: number;
   characterDelay?: number;
   delay?: number;
@@ -19,7 +16,7 @@ interface BlurFadeTextProps {
 }
 
 const BlurFadeText = ({
-  text,
+  children,
   className,
   variant,
   duration = 0.4,
@@ -33,34 +30,27 @@ const BlurFadeText = ({
     visible: { y: 0, opacity: 1, filter: 'blur(0px)' },
   };
   const combinedVariants = variant || defaultVariants;
-  const characters = useMemo(() => Array.from(text), [text]);
 
-  if (animateByCharacter) {
+  if (animateByCharacter && typeof children === 'string') {
     return (
-      <div className="flex">
-        {characters.map((char, i) => {
-          const charVariants: Variants = {
-            hidden: { y: -yOffset, opacity: 0, filter: 'blur(8px)' },
-            visible: { y: 0, opacity: 1, filter: 'blur(0px)' },
-          };
-          return (
-            <motion.span
-              key={i}
-              initial="hidden"
-              animate="visible"
-              variants={charVariants}
-              transition={{
-                duration,
-                delay: delay + i * characterDelay,
-                ease: 'easeOut',
-              }}
-              className={cn('inline-block', className)}
-              style={{ width: char.trim() === '' ? '0.2em' : 'auto' }}
-            >
-              {char}
-            </motion.span>
-          );
-        })}
+      <div className="flex flex-wrap">
+        {Array.from(children).map((char, i) => (
+          <motion.span
+            key={i}
+            initial="hidden"
+            animate="visible"
+            variants={combinedVariants}
+            transition={{
+              duration,
+              delay: delay + i * characterDelay,
+              ease: 'easeOut',
+            }}
+            className={cn('inline-block', className)}
+            style={{ width: char.trim() === '' ? '0.2em' : 'auto' }}
+          >
+            {char}
+          </motion.span>
+        ))}
       </div>
     );
   }
@@ -78,7 +68,7 @@ const BlurFadeText = ({
         }}
         className={cn('inline-block', className)}
       >
-        {text}
+        {children}
       </motion.span>
     </div>
   );

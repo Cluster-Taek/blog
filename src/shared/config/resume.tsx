@@ -30,8 +30,8 @@ interface Hackathon {
 }
 
 const skills: Skill[] = [
-  { name: 'React', icon: ReactIcon },
   { name: 'Next.js', icon: NextJs },
+  { name: 'React', icon: ReactIcon },
   { name: 'TypeScript', icon: TypeScript },
   { name: 'React Native', icon: ReactIcon },
   { name: 'Node.js', icon: NodeJs },
@@ -52,10 +52,66 @@ export const DATA = {
   url: 'https://github.com/Cluster-Taek',
   location: 'Seoul, South Korea',
   locationLink: 'https://www.google.com/maps/place/seoul',
-  description:
-    '5년차 프론트엔드 개발자. 기획부터 배포, 운영까지 풀사이클 경험을 갖추고 있으며 비개발자와의 커뮤니케이션에 강점이 있습니다.',
-  summary:
-    '이커머스, B2B SaaS, 핀테크 등 다양한 도메인에서 React 기반 프론트엔드를 설계하고 개발해왔습니다. 스타트업 공동 창업을 통해 기획부터 배포까지 프로덕트의 전 과정을 경험했고, CI/CD 자동화와 인프라 세팅까지 관심 영역을 확장하고 있습니다. 최근에는 다양한 LLM의 일관된 코드 퀄리티를 팀 단위에서 공유할 수 있는 방법에 관심을 가지고 있습니다.',
+  description: (
+    <>
+      개발자라는 직업이 아닌 <span className="font-bold">개발자의 삶</span>을 살아가는
+      <br />
+      <span className="font-bold">비즈니스 문제를 기술로 풀어내는</span> 프론트엔드 엔지니어
+    </>
+  ),
+  summary: (
+    // <div className="flex flex-col gap-1">
+    //   <span>
+    //     <b className="text-primary">[폭넓은 개발 사이클 경험]</b> 초기 스타트업의 0 to 1 구축부터 코오롱몰과 같은 대규모
+    //     커머스의 아키텍처 리뉴얼까지, 기획-배포-운영 전반의 과정을 경험했습니다.
+    //   </span>
+    //   <span>
+    //     <b className="text-primary">[DX & 성능 최적화]</b> 슬라이딩 윈도우 전략과 Dynamic Imports를 적용해 메인 화면
+    //     초기 번들 로드 시간을 57% 단축(3500ms → 1500ms)했으며, 컴파운드 패턴으로 레거시 시스템을 재설계하여 확장성을
+    //     극대화했습니다.
+    //   </span>
+    //   <span>
+    //     <b className="text-primary">[프론트엔드 인프라 최적화]</b>{' '}
+    //     <a
+    //       href="https://cluster-taek.tistory.com/entry/NextJS-k8s-%ED%94%84%EB%A1%9C%EB%8D%95%EC%85%98-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-OOMKilled-%ED%98%84%EC%83%81"
+    //       target="_blank"
+    //       rel="noopener noreferrer"
+    //       className="text-primary underline"
+    //     >
+    //       EKS 배포 다운타임 최소화
+    //     </a>
+    //     , Serverless 도입을 통한 서버비 절감 등 인프라와 운영 레벨의 이슈를 능동적으로 해결합니다.
+    //   </span>
+    //   <span>
+    //     <b className="text-primary">[LLM 기반 생산성 향상]</b>{' '}
+    //     <a
+    //       href="https://github.com/Cluster-Taek/create-next-claude-app"
+    //       target="_blank"
+    //       rel="noopener noreferrer"
+    //       className="text-primary underline"
+    //     >
+    //       Claude Code 기반의 Next.js CLI(create-next-claude-app)
+    //     </a>{' '}
+    //     를 개발해 npm에 배포했습니다. FSD 아키텍처를 적용해 LLM의 코드 맥락 파악을 최적화하고, TDD 기반 워크플로우로
+    //     개발 생산성을 높이는 시도를 이어가고 있습니다.
+    //   </span>
+    // </div>
+    <p>
+      최근 프론트엔드 생태계에 <b>LLM을 실질적으로 접목하는 새로운 개발 워크플로우</b> 구축에 몰두하고 있습니다. 지난
+      5년간 초기 스타트업부터 <b>대규모 커머스의 리뉴얼</b>까지 폭넓은 비즈니스 환경을 거치며, <b>렌더링 최적화</b>는
+      물론 <b>운영 레벨의 문제</b>까지 능동적으로 해결해 왔습니다. 업무 밖의 시간에도 기술적 호기심을 바탕으로 꾸준히
+      사이드 프로젝트를 진행하고 있으며, 최근에는 <b>Claude Code</b>와 <b>FSD 아키텍처</b>를 적용한{' '}
+      <a
+        href="https://github.com/Cluster-Taek/create-next-claude-app"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-bold underline"
+      >
+        Next.js CLI를 직접 개발해 npm에 배포
+      </a>
+      하기도 했습니다.
+    </p>
+  ),
   avatarUrl: '/me.png',
   skills,
   contact: {
@@ -89,11 +145,62 @@ export const DATA = {
       badges: ['E-Commerce', 'B2B SaaS'],
       location: 'Seoul',
       title: 'Frontend Developer',
-      logoUrl: '',
-      start: '2022.06',
+      logoUrl: '/purpleworks.webp',
+      start: '2022.06.22',
       end: undefined as string | undefined,
-      description:
-        '코오롱몰 전시영역 리뉴얼 — 컴파운드 패턴 기반 앵커 시스템 설계, Mixpanel HOC 패턴 적용으로 수정 대상 파일 88% 감소(50개 → 6개), 슬라이딩 윈도우 전략으로 번들 로드 시간 3.5s → 1.5s 단축. B2B SaaS Brandrive — 대용량 파일 백그라운드 다운로드 구현, Multi-Tenant 권한 관리 체계 구축, EKS 배포 다운타임 30초 → 3초 미만 단축.',
+      description: (
+        <div className="space-y-2">
+          <div className="space-y-1">
+            <p className="font-semibold">[코오롱 BX 팀]</p>
+            <ul className="list-disc list-outside pl-4 space-y-1">
+              <li>
+                통합 이커머스{' '}
+                <a
+                  href="https://www.kolonmall.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-semibold underline"
+                >
+                  Kolon Mall
+                </a>{' '}
+                전시 영역 리뉴얼 및 유지 보수
+              </li>
+              <li>전시 영역의 동적 패널 및 컴포넌트 시스템 설계 참여 및 구현</li>
+              <li>공통 모듈 동적 앵커 시스템 구현</li>
+              <li>데스크탑, 모바일, 어플리케이션에서 WebView 및 크로스 브라우징 이슈 대응</li>
+              <li>Mixpanel을 활용한 재사용 가능한 데이터 트래킹 모듈 구현</li>
+            </ul>
+          </div>
+          <div className="space-y-1">
+            <p className="font-semibold">[Brandrive 팀]</p>
+            <ul className="list-disc list-outside pl-4 space-y-1">
+              <li>
+                <a
+                  href="https://www.brandrive.co.kr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-semibold underline"
+                >
+                  B2B SaaS 플랫폼 Brandrive
+                </a>{' '}
+                서비스 리뉴얼 프론트엔드 담당 및 런칭
+              </li>
+              <li>클라우드 스토리지 파일 다중 업로드, 버전 관리, 이미지 자산 편집 기능 개발</li>
+              <li>Multi-Tenancy 환경에서의 프론트엔드 구조 설계 참여</li>
+              <li>
+                <a
+                  href="https://cluster-taek.tistory.com/entry/NextJS-k8s-%ED%94%84%EB%A1%9C%EB%8D%95%EC%85%98-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-OOMKilled-%ED%98%84%EC%83%81"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline"
+                >
+                  EKS 기반 블루/그린 배포 적용 및 인프라 관련 에러 대응
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      ),
     },
     {
       company: 'Data Studio',
@@ -102,18 +209,35 @@ export const DATA = {
       location: 'Seoul',
       title: 'Application / Server Developer',
       logoUrl: '',
-      start: '2021.09',
-      end: '2022.05',
-      description:
-        '가상화폐 카피 트레이딩 플랫폼 Reabit 기획 및 개발 리드. React Native와 Express.js로 MVP를 2주 만에 플레이스토어 등록. 트랜잭션 분리를 통한 결제·주문 무결성 보장.',
+      start: '2021.09.01',
+      end: '2022.05.31',
+      description: (
+        <ul className="list-disc list-outside pl-4 space-y-1">
+          <li>업비트 API를 활용한 가상화폐 스타트업 창업</li>
+          <li>김치 프리미엄 실시간 정렬 사이트 개발</li>
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=X3DaVx7vX4E"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary font-semibold underline"
+            >
+              카피 트레이딩 플랫폼 Reabit
+            </a>{' '}
+            프로젝트 기획 및 개발 리드
+          </li>
+          <li>React Native로 2주 만에 크로스 플랫폼 앱 개발 및 플레이스토어 런칭</li>
+          <li>백테스팅/트레이딩 서버 연동 및 트레이더 구독 기능 구현</li>
+        </ul>
+      ),
     },
   ],
   education: [
     {
-      school: '한국산업기술대학교',
-      href: 'https://www.kpu.ac.kr',
+      school: '한국공학대학교',
+      href: 'https://www.tukorea.ac.kr',
       degree: 'IT경영 (부전공: 벤처창업) | 학사',
-      logoUrl: '',
+      logoUrl: '/tukorea.webp',
       start: '2016',
       end: '2022',
     },
