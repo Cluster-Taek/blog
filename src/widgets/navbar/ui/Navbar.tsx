@@ -7,7 +7,7 @@ import { Separator } from '@/shared/ui/separator';
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/shared/ui/tooltip';
 
 const DOCK_ICON_CLASS =
-  'rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors';
+  'rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl transition-colors';
 
 const TOOLTIP_CLASS =
   'rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]';

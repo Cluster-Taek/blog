@@ -11,12 +11,19 @@ import {
   TypeScript,
   VercelDark,
 } from 'developer-icons';
+import { GlobeIcon, PlayIcon } from 'lucide-react';
 import { type ReactNode, type SVGProps } from 'react';
 import { Icons } from '@/shared/ui/icons';
 
 interface Skill {
   name: string;
   icon?: (props: SVGProps<SVGSVGElement>) => ReactNode;
+}
+
+interface ProjectLink {
+  type: string;
+  href: string;
+  icon: ReactNode;
 }
 
 interface Hackathon {
@@ -244,6 +251,24 @@ export const DATA = {
   ],
   projects: [
     {
+      title: 'create-next-claude-app',
+      href: '',
+      dates: '2025.06 ~ 진행 중',
+      active: true,
+      description:
+        'Claude Code + FSD 아키텍처 기반 Next.js 프로젝트 스캐폴딩 CLI. TDD 워크플로우와 LLM 친화적 구조를 자동 세팅하여 개발 생산성을 극대화하는 오픈소스 도구.',
+      technologies: ['Node.js', 'TypeScript', 'Claude Code', 'FSD', 'npm'],
+      links: [
+        {
+          type: 'GitHub',
+          href: 'https://github.com/Cluster-Taek/create-next-claude-app',
+          icon: <Icons.github className="size-4" />,
+        },
+      ] satisfies ProjectLink[],
+      image: '/project/create-next-claude-app.png',
+      video: '',
+    },
+    {
       title: '코오롱몰 리뉴얼',
       href: '',
       dates: '2024.03 ~ 진행 중',
@@ -251,7 +276,13 @@ export const DATA = {
       description:
         '통합 이커머스 코오롱몰의 전시영역 전체 리뉴얼. 컴파운드 패턴 기반 앵커 시스템으로 재사용성 향상, Mixpanel 이벤트 파편화 해소(88% 파일 감소), 슬라이딩 윈도우 전략으로 번들 로드 시간 57% 단축.',
       technologies: ['Next.js', 'React', 'TypeScript', 'Mixpanel', 'Swiper.js'],
-      links: [] as { type: string; href: string; icon: ReactNode }[],
+      links: [
+        {
+          type: 'Website',
+          href: 'https://www.kolonmall.com',
+          icon: <GlobeIcon />,
+        },
+      ] satisfies ProjectLink[],
       image: '/project/kolonmall.png',
       video: '/project/kolonmall.mp4',
     },
@@ -263,21 +294,15 @@ export const DATA = {
       description:
         'Google Drive를 레퍼런스로 한 B2B SaaS 디지털 에셋 관리 플랫폼. 대용량 파일 다중 다운로드, Multi-Tenant 권한 관리, EKS 기반 블루/그린 배포 적용.',
       technologies: ['React', 'TypeScript', 'Context API', 'EKS', 'Kubernetes', 'CloudWatch', 'Helm'],
-      links: [] as { type: string; href: string; icon: ReactNode }[],
+      links: [
+        {
+          type: 'Website',
+          href: 'https://www.brandrive.co.kr/',
+          icon: <GlobeIcon />,
+        },
+      ] satisfies ProjectLink[],
       image: '/project/brandrive_home.png',
       video: '/project/brandrive_home.mp4',
-    },
-    {
-      title: '도리보틀',
-      href: '',
-      dates: '2024.03 ~ 2025.03',
-      active: false,
-      description:
-        '친환경 리유저블 컵 대여 플랫폼. Webview + PWA로 잦은 수정에 유연하게 대응. EKS 인프라를 Vercel Serverless로 마이그레이션하여 월 서버비 $80 → $0 절감.',
-      technologies: ['Next.js', 'PWA', 'Toss Payment API', 'Vercel', 'Redis'],
-      links: [] as { type: string; href: string; icon: ReactNode }[],
-      image: '/project/doribottle.png',
-      video: '/project/doribottle.mp4',
     },
     {
       title: 'Reabit',
@@ -287,9 +312,51 @@ export const DATA = {
       description:
         'Upbit Open API 기반 카피 트레이딩 플랫폼. 리더 트레이더의 거래를 자동 팔로우하는 시스템. MVP 2주 만에 플레이스토어 등록 및 오픈.',
       technologies: ['React Native', 'Express.js', 'Upbit API', 'MySQL'],
-      links: [] as { type: string; href: string; icon: ReactNode }[],
+      links: [
+        {
+          type: 'Youtube',
+          href: 'https://www.youtube.com/watch?v=X3DaVx7vX4E',
+          icon: <PlayIcon />,
+        },
+      ] satisfies ProjectLink[],
       image: '/project/reabit.png',
       video: '/project/reabit.mp4',
+    },
+    {
+      title: '도리보틀',
+      href: '',
+      dates: '2024.03 ~ 2025.03',
+      active: false,
+      description:
+        '친환경 리유저블 컵 대여 플랫폼. Webview + PWA로 잦은 수정에 유연하게 대응. EKS 인프라를 Vercel Serverless로 마이그레이션하여 월 서버비 $80 → $0 절감.',
+      technologies: ['Next.js', 'PWA', 'Toss Payment API', 'Vercel', 'Redis'],
+      links: [] satisfies ProjectLink[],
+      image: '/project/doribottle.png',
+      video: '/project/doribottle.mp4',
+    },
+    {
+      title: '연합뉴스 헤드라인 Slack Bot',
+      href: '',
+      dates: '2024',
+      active: false,
+      description:
+        'Lambda + EventBridge를 활용한 연합뉴스 실시간 헤드라인 Slack Bot. Serverless 아키텍처로 스케줄링된 뉴스 수집 및 Slack 채널 자동 전송.',
+      technologies: ['AWS Lambda', 'EventBridge', 'Slack API', 'Node.js'],
+      links: [] satisfies ProjectLink[],
+      image: '/project/yna-slack.png',
+      video: '',
+    },
+    {
+      title: 'Flutter 연차 캘린더',
+      href: '',
+      dates: '2023',
+      active: false,
+      description:
+        'iOS 기본 캘린더를 레퍼런스로 한 무한 스크롤 연차 캘린더 및 신청 앱. 사내 연차 관리 편의를 위해 개발.',
+      technologies: ['Flutter', 'Dart', 'iOS', 'Android'],
+      links: [] satisfies ProjectLink[],
+      image: '/project/purple-hr.png',
+      video: '/project/purple-hr.mp4',
     },
   ],
   hackathons,

@@ -131,7 +131,7 @@ export function HomePage() {
       </section>
       <section id="projects">
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
-          <ProjectsSection />
+          <ProjectsSection maxCount={4} />
         </BlurFade>
       </section>
       <section id="contact">

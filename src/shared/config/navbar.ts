@@ -1,9 +1,10 @@
-import { HomeIcon, NotebookIcon } from 'lucide-react';
+import { HomeIcon, NotebookIcon, PenLineIcon, CodeIcon } from 'lucide-react';
 import { Icons } from '@/shared/ui/icons';
 
 export const NAVBAR_ITEMS = [
   { href: '/', icon: HomeIcon, label: 'Home' },
-  { href: '/blog', icon: NotebookIcon, label: 'Blog' },
+  { href: '/projects', icon: CodeIcon, label: 'Projects' },
+  { href: '/blog', icon: PenLineIcon, label: 'Blog' },
 ] as const;
 
 export const SOCIAL_LINKS = {
@@ -17,6 +18,12 @@ export const SOCIAL_LINKS = {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/seungtaek-yoo-47473820b/',
     icon: Icons.linkedin,
+    navbar: true,
+  },
+  Tistory: {
+    name: 'Tistory',
+    url: 'https://cluster-taek.tistory.com/',
+    icon: NotebookIcon,
     navbar: true,
   },
 } as const;
