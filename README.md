@@ -9,7 +9,7 @@ Next.js 16 + Feature-Sliced Design boilerplate and CLI scaffolding tool.
 ```bash
 npx create-next-claude-app my-app
 cd my-app
-pnpm mock && pnpm dev
+pnpm dev
 ```
 
 > CLI options: [cli/README.md](./cli/README.md)
@@ -21,7 +21,6 @@ pnpm mock && pnpm dev
 | Framework    | Next.js 16 (App Router) · React 19 · TypeScript 5.9    |
 | Styling      | Tailwind CSS v4                                        |
 | State & Data | Zustand · TanStack React Query · React Hook Form + Zod |
-| Auth         | NextAuth.js                                            |
 | Testing      | Vitest · Testing Library · Playwright                  |
 | DX           | ESLint · Prettier · Husky · Commitlint · Steiger       |
 | Build        | Turbopack · React Compiler                             |
@@ -36,8 +35,8 @@ src/
 ├── app/                Providers, initialization
 ├── views/              Page compositions (Server Components)
 ├── widgets/            Independent UI blocks
-├── features/           Business features (auth, modal, user-create)
-├── entities/           Business entities (user, account)
+├── features/           Business features (modal)
+├── entities/           Business entities
 └── shared/             api, ui, lib, model, config
 ```
 
@@ -49,12 +48,9 @@ src/
 cp .env.example .env
 ```
 
-| Variable              | Description                                                              |
-| --------------------- | ------------------------------------------------------------------------ |
-| `NEXTAUTH_URL`        | Service URL (`http://localhost:3000`)                                    |
-| `NEXTAUTH_SECRET`     | NextAuth secret key ([generator](https://generate-secret.vercel.app/32)) |
-| `NEXT_PUBLIC_DOMAIN`  | Client domain                                                            |
-| `NEXT_PUBLIC_API_URL` | API server URL (`http://localhost:4001`)                                 |
+| Variable             | Description   |
+| -------------------- | ------------- |
+| `NEXT_PUBLIC_DOMAIN` | Client domain |
 
 ## Claude Code Skills
 
@@ -82,7 +78,6 @@ git clone https://github.com/Cluster-Taek/create-next-claude-app.git
 cd create-next-claude-app
 cp .env.example .env
 pnpm install && pnpm prepare
-pnpm mock    # separate terminal
 pnpm dev
 ```
 
