@@ -26,6 +26,12 @@ interface ProjectLink {
   icon: ReactNode;
 }
 
+interface ProjectSlide {
+  image?: string;
+  video?: string;
+  description?: ReactNode;
+}
+
 interface Hackathon {
   title: string;
   dates: string;
@@ -267,6 +273,7 @@ export const DATA = {
       ] satisfies ProjectLink[],
       image: '/project/create-next-claude-app.png',
       video: '',
+      slides: [{ image: '/project/create-next-claude-app.png' }] satisfies ProjectSlide[],
     },
     {
       title: '코오롱몰 리뉴얼',
@@ -285,6 +292,7 @@ export const DATA = {
       ] satisfies ProjectLink[],
       image: '/project/kolonmall.png',
       video: '/project/kolonmall.mp4',
+      slides: [{ video: '/project/kolonmall.mp4' }] satisfies ProjectSlide[],
     },
     {
       title: 'Brandrive',
@@ -303,6 +311,7 @@ export const DATA = {
       ] satisfies ProjectLink[],
       image: '/project/brandrive_home.png',
       video: '/project/brandrive_home.mp4',
+      slides: [{ video: '/project/brandrive_home.mp4' }] satisfies ProjectSlide[],
     },
     {
       title: 'Reabit',
@@ -321,6 +330,7 @@ export const DATA = {
       ] satisfies ProjectLink[],
       image: '/project/reabit.png',
       video: '/project/reabit.mp4',
+      slides: [{ video: '/project/reabit.mp4' }] satisfies ProjectSlide[],
     },
     {
       title: '도리보틀',
@@ -333,6 +343,7 @@ export const DATA = {
       links: [] satisfies ProjectLink[],
       image: '/project/doribottle.png',
       video: '/project/doribottle.mp4',
+      slides: [{ video: '/project/doribottle.mp4' }] satisfies ProjectSlide[],
     },
     {
       title: '연합뉴스 헤드라인 Slack Bot',
@@ -345,6 +356,7 @@ export const DATA = {
       links: [] satisfies ProjectLink[],
       image: '/project/yna-slack.png',
       video: '',
+      slides: [{ image: '/project/yna-slack.png' }] satisfies ProjectSlide[],
     },
     {
       title: 'Flutter 연차 캘린더',
@@ -357,6 +369,7 @@ export const DATA = {
       links: [] satisfies ProjectLink[],
       image: '/project/purple-hr.png',
       video: '/project/purple-hr.mp4',
+      slides: [{ video: '/project/purple-hr.mp4' }] satisfies ProjectSlide[],
     },
   ],
   hackathons,
