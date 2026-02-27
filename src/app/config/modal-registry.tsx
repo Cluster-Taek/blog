@@ -1,7 +1,6 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import { MODAL, type ModalComponent } from '@/features/modal';
+import { type ModalComponent } from '@/features/modal';
 
 /**
  * 모달 레지스트리 (동적 import)
@@ -14,11 +13,6 @@ import { MODAL, type ModalComponent } from '@/features/modal';
  * 2. features/에 모달 feature 생성
  * 3. 이 레지스트리에 dynamic import 추가
  */
-export const MODAL_COMPONENTS: Record<string, ModalComponent> = {
-  [MODAL.USER_CREATE]: dynamic(
-    () => import('@/features/user-create').then((mod) => ({ default: mod.UserCreateFormModal })),
-    { ssr: false }
-  ),
-} as const;
+export const MODAL_COMPONENTS: Record<string, ModalComponent> = {} as const;
 
 export type ModalId = keyof typeof MODAL_COMPONENTS;

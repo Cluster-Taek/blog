@@ -16,17 +16,12 @@ export default defineConfig({
   },
 
   projects: [
-    // 인증 상태 생성
-    { name: 'setup', testMatch: /auth\.setup\.ts/ },
-
     // 브라우저 테스트 (Chromium만 기본 사용, 필요 시 브라우저 추가 설치 후 project 추가)
     {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: 'e2e/.auth/user.json',
       },
-      dependencies: ['setup'],
     },
   ],
 
