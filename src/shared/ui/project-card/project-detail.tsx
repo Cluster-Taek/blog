@@ -36,6 +36,7 @@ interface ProjectDetailProps {
 export function ProjectDetail({ title, dates, description, tags, slides = [], links }: ProjectDetailProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+
   const count = slides.length;
 
   const onSelect = () => {
@@ -121,8 +122,6 @@ export function ProjectDetail({ title, dates, description, tags, slides = [], li
             )}
           </div>
         )}
-
-        <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
 
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5">

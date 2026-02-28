@@ -273,7 +273,46 @@ export const DATA = {
       ] satisfies ProjectLink[],
       image: '/project/create-next-claude-app.png',
       video: '',
-      slides: [{ image: '/project/create-next-claude-app.png' }] satisfies ProjectSlide[],
+      slides: [
+        {
+          image: '/project/create-next-claude-app_main.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">FSD 아키텍처로 LLM 토큰 최적화</p>
+              <p>
+                <strong>Feature-Sliced Design</strong> 아키텍처를 적용하여 LLM이 코드 맥락을 파악할 때 토큰 사용을
+                최적화했습니다. 레이어별 명확한 경계와 의존성 관리로 코드 탐색 범위를 최소화합니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          image: '/project/create-next-claude-app.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">TDD 기반 Claude Skill 워크플로우</p>
+              <p>
+                <strong>/tdd → /fsd → 구현 → /review → /commit</strong> 프로세스를 Claude Code Skills로 내장했습니다.
+                요구사항에서 테스트 코드를 먼저 생성하고(Red), FSD 슬라이스를 스캐폴딩한 뒤 구현하는 흐름으로 개발
+                생산성을 극대화합니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          video: '/project/create-next-claude-app_cli.mp4',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">CLI 기반 프로젝트 스캐폴딩</p>
+              <p>
+                <strong>npx create-next-claude-app my-app</strong> 한 줄로 Next.js 16 + FSD 아키텍처 보일러플레이트를
+                즉시 생성합니다. Zustand, TanStack Query, React Hook Form + Zod, NextAuth.js 등 실무에서 검증된 스택이
+                기본 세팅됩니다.
+              </p>
+            </div>
+          ),
+        },
+      ] satisfies ProjectSlide[],
     },
     {
       title: '코오롱몰 리뉴얼',
@@ -292,7 +331,47 @@ export const DATA = {
       ] satisfies ProjectLink[],
       image: '/project/kolonmall.png',
       video: '/project/kolonmall.mp4',
-      slides: [{ video: '/project/kolonmall.mp4' }] satisfies ProjectSlide[],
+      slides: [
+        {
+          video: '/project/kolonmall.mp4',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">컴파운드 패턴 기반 앵커 시스템 재설계</p>
+              <p>
+                기존 기획전 앵커 시스템은 특정 페이지와 결합도가 높아 동적 렌더링 환경에서 재사용이 어려웠습니다.{' '}
+                <strong>컴파운드 패턴</strong>을 활용해 {'<AnchorSection>'}으로 감싸진 컴포넌트를 렌더링 이후 앵커
+                Context에 등록하고, 스크롤 방향에 따른 동적 랜딩 위치를 계산하도록 재설계했습니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          video: '/project/kolonmall_mixpanel.mp4',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">Mixpanel 이벤트 트래킹 공통 모듈화</p>
+              <p>
+                50여 개 패널 컴포넌트에 파편화된 트래킹 요구사항을 재정립하고, 패널 타입별{' '}
+                <strong>HOC(고차 컴포넌트) 패턴과 Custom Hook</strong>을 적용하여 수정 대상 파일을{' '}
+                <strong>50개에서 6개로 88% 감소</strong>시켰습니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          image: '/project/kolonmall_swiper.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">슬라이딩 윈도우 전략으로 번들 로드 57% 단축</p>
+              <p>
+                메인 화면 스와이퍼에서 모든 패널이 한 번에 렌더링되며 초기 로딩이 느린 문제를{' '}
+                <strong>[current-1, current, current+1] 슬라이딩 윈도우 전략</strong>과 <strong>Dynamic Imports</strong>
+                로 해결. 주요 번들 로드 시간을 <strong>3500ms → 1500ms</strong>로 대폭 단축했습니다.
+              </p>
+            </div>
+          ),
+        },
+      ] satisfies ProjectSlide[],
     },
     {
       title: 'Brandrive',
@@ -311,7 +390,67 @@ export const DATA = {
       ] satisfies ProjectLink[],
       image: '/project/brandrive_home.png',
       video: '/project/brandrive_home.mp4',
-      slides: [{ video: '/project/brandrive_home.mp4' }] satisfies ProjectSlide[],
+      slides: [
+        {
+          video: '/project/brandrive_home.mp4',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">Web Storage 시스템 개발</p>
+              <p>
+                Google Drive를 레퍼런스로 <strong>폴더 라우팅, 다중 파일 업/다운로드, 이미지 편집 및 버전 관리</strong>{' '}
+                등 Web Storage 시스템 UI 전반을 개발했습니다. 재귀 호출 및 localStorage 캐싱을 활용하여 서버 요청 횟수를
+                최소화한 폴더 트리 구조 렌더링을 최적화했습니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          video: '/project/brandrive_download.mp4',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">대용량 파일 다중 다운로드 상태 관리</p>
+              <p>
+                서버 측 압축 시간 소요로 지연이 발생하고 진행 상태 피드백이 없는 문제를{' '}
+                <strong>Polling + Context API</strong>를 조합하여 해결. 사용자가 다른 페이지로 이동하더라도
+                백그라운드에서 프로세스를 지속하고 진행률을 전역적으로 노출했습니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          video: '/project/brandrive_tenant.mp4',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">Multi-Tenant 권한 관리</p>
+              <p>
+                Access Token 만료 기간을 5분 단위로 설정하고 Middleware에서 권한 재검증.{' '}
+                <strong>RefreshToken + Sliding Session</strong> 방식을 적용하여 편의성과 보안을 동시에 확보했습니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          image: '/project/brandrive-eks.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">EKS 배포 다운타임 최소화</p>
+              <p>
+                OOM 발생 및 다운타임 문제를 CloudWatch Alarms + Slack 경보, 오토스케일링 Helm Chart,{' '}
+                <strong>Readiness Probe 롤링 업데이트</strong>로 해결. 배포 시 다운타임을{' '}
+                <strong>30초 → 3초 미만</strong>으로 단축했습니다.
+              </p>
+              <a
+                href="https://cluster-taek.tistory.com/entry/NextJS-k8s-%ED%94%84%EB%A1%9C%EB%8D%95%EC%85%98-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-OOMKilled-%ED%98%84%EC%83%81"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                관련 포스팅 보러가기
+              </a>
+            </div>
+          ),
+        },
+      ] satisfies ProjectSlide[],
     },
     {
       title: 'Reabit',
@@ -330,7 +469,46 @@ export const DATA = {
       ] satisfies ProjectLink[],
       image: '/project/reabit.png',
       video: '/project/reabit.mp4',
-      slides: [{ video: '/project/reabit.mp4' }] satisfies ProjectSlide[],
+      slides: [
+        {
+          video: '/project/reabit.mp4',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">카피 트레이딩 플랫폼 기획 및 개발 리드</p>
+              <p>
+                팔로우한 리더 트레이더 혹은 봇의 거래를 자동으로 따라 거래하는 시스템을 설계했습니다. 트레이딩 봇 및
+                리더 팔로우, <strong>Play Store 구독 결제, 푸시 알림, 백테스팅 차트</strong>를 구현하고, React Native로{' '}
+                <strong>2주 만에 플레이스토어 런칭</strong>에 성공했습니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          image: '/project/reabit_architecture.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">백테스팅/트레이딩 서버 연동</p>
+              <p>
+                <strong>ExpressJS</strong>로 어플리케이션 서버를 개발하고, 백테스팅 서버 및 트레이딩 서버와 연동하여
+                백테스팅 차트 출력 및 카피 트레이딩 기능을 지원했습니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          image: '/project/reabit-concurrency.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">한정 재고 동시성 제어</p>
+              <p>
+                투자 전략별 수용 Capacity가 존재하여 동시성 제어가 필요했습니다. 외부 모듈과 어플리케이션 서버의{' '}
+                <strong>트랜잭션을 분리</strong>하고, 실패 시 해당 결제를 취소하는 방식으로 결제와 주문의 무결성을
+                보장했습니다.
+              </p>
+            </div>
+          ),
+        },
+      ] satisfies ProjectSlide[],
     },
     {
       title: '도리보틀',
@@ -338,12 +516,39 @@ export const DATA = {
       dates: '2024.03 ~ 2025.03',
       active: false,
       description:
-        '친환경 리유저블 컵 대여 플랫폼. Webview + PWA로 잦은 수정에 유연하게 대응. EKS 인프라를 Vercel Serverless로 마이그레이션하여 월 서버비 $80 → $0 절감.',
-      technologies: ['Next.js', 'PWA', 'Toss Payment API', 'Vercel', 'Redis'],
+        '예비 창업 패키지 선정. 친환경 리유저블 컵 대여 플랫폼. Webview + PWA로 잦은 수정에 유연하게 대응. EKS 인프라를 Vercel Serverless로 마이그레이션하여 월 서버비 $80 → $0 절감.',
+      technologies: ['Next.js', 'PWA', 'Toss Payment API', 'Vercel', 'Redis', 'OneSignal'],
       links: [] satisfies ProjectLink[],
       image: '/project/doribottle.png',
       video: '/project/doribottle.mp4',
-      slides: [{ video: '/project/doribottle.mp4' }] satisfies ProjectSlide[],
+      slides: [
+        {
+          video: '/project/doribottle.mp4',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">Webview + PWA 기반 유연한 대응</p>
+              <p>
+                잦은 수정에 기민하게 대응하기 위해 <strong>Webview + PWA</strong>를 도입하고,{' '}
+                <strong>Toss Payment 빌링 API</strong>를 활용하여 결제 프로세스를 간소화했습니다.{' '}
+                <strong>OneSignal</strong>을 활용하여 컵 반납 알림, 결제 완료 등 웹 푸시 알림을 구현했습니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          image: '/project/doribottle_admin.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">Serverless 마이그레이션으로 서버비 100% 절감</p>
+              <p>
+                팀원 이탈로 EKS 인프라 유지보수 한계에 직면하여, Vercel 개인 플랜으로 Next.js 기반 모놀리식 Admin으로
+                마이그레이션. 배포, DB, Redis까지 <strong>Serverless 환경</strong>으로 전환하여 매달 서버 유지 비용을{' '}
+                <strong>$80 → $0</strong>으로 절감했습니다.
+              </p>
+            </div>
+          ),
+        },
+      ] satisfies ProjectSlide[],
     },
     {
       title: '연합뉴스 헤드라인 Slack Bot',
@@ -356,7 +561,21 @@ export const DATA = {
       links: [] satisfies ProjectLink[],
       image: '/project/yna-slack.png',
       video: '',
-      slides: [{ image: '/project/yna-slack.png' }] satisfies ProjectSlide[],
+      slides: [
+        {
+          image: '/project/yna-slack_chat.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">Serverless 실시간 뉴스 수집 파이프라인</p>
+              <p>
+                <strong>AWS Lambda + EventBridge</strong>로 연합뉴스 헤드라인을 스케줄링 기반으로 자동 수집하고,{' '}
+                <strong>Slack API</strong>를 통해 지정 채널에 실시간 전송하는 Bot을 개발했습니다. 별도 서버 운영 없이
+                Serverless 아키텍처로 안정적으로 운영됩니다.
+              </p>
+            </div>
+          ),
+        },
+      ] satisfies ProjectSlide[],
     },
     {
       title: 'Flutter 연차 캘린더',
@@ -369,7 +588,20 @@ export const DATA = {
       links: [] satisfies ProjectLink[],
       image: '/project/purple-hr.png',
       video: '/project/purple-hr.mp4',
-      slides: [{ video: '/project/purple-hr.mp4' }] satisfies ProjectSlide[],
+      slides: [
+        {
+          video: '/project/purple-hr.mp4',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">iOS 캘린더 레퍼런스 무한 스크롤 구현</p>
+              <p>
+                iOS 기본 캘린더를 레퍼런스로 <strong>무한 스크롤 연차 캘린더</strong>를 Flutter로 개발했습니다. 사내
+                연차 관리 편의를 위해 연차 신청 및 조회 기능을 구현했습니다.
+              </p>
+            </div>
+          ),
+        },
+      ] satisfies ProjectSlide[],
     },
   ],
   hackathons,
