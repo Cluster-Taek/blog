@@ -22,10 +22,11 @@ export const metadata: Metadata = {
     default: 'Seungtaek Yoo | Frontend Developer',
     template: '%s | Seungtaek Yoo',
   },
-  description: '5년차 프론트엔드 개발자 유승택의 포트폴리오 블로그. React, Next.js, TypeScript 기반 웹 개발.',
+  description:
+    '프론트엔드 개발자 유승택의 포트폴리오. 이커머스, B2B SaaS, 핀테크 등 다양한 도메인에서 Next.js, React, TypeScript 기반 웹 개발 경험을 공유합니다.',
   openGraph: {
     title: 'Seungtaek Yoo | Frontend Developer',
-    description: '5년차 프론트엔드 개발자 유승택의 포트폴리오 블로그.',
+    description: '비즈니스 문제를 기술로, 기술적 문제를 비즈니스로 풀어내는 프론트엔드 개발자 유승택의 포트폴리오.',
     url: 'https://github.com/Cluster-Taek',
     siteName: 'Seungtaek Yoo',
     locale: 'ko_KR',
