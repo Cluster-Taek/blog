@@ -45,7 +45,7 @@ export default function ProjectsSection({ maxCount }: ProjectsSectionProps) {
               </DialogTrigger>
               <DialogContent
                 showCloseButton={false}
-                className="h-[90dvh] w-[90vw] max-w-none p-0 rounded-xl translate-x-[-50%] translate-y-[-50%]"
+                className="flex flex-col h-[90dvh] w-[calc(100%-2rem)] max-w-2xl sm:max-w-2xl p-0 rounded-xl overflow-hidden"
               >
                 <ProjectDetail
                   title={project.title}
