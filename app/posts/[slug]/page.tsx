@@ -29,7 +29,7 @@ export async function generateMetadata({
       description,
       type: 'article',
       publishedTime,
-      url: `${DATA.url}/blog/${slug}`,
+      url: `${DATA.url}/posts/${slug}`,
       ...(image && { images: [{ url: `${DATA.url}${image}` }] }),
     },
     twitter: {
@@ -41,11 +41,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   return <BlogPostPage slug={slug} />;
 }

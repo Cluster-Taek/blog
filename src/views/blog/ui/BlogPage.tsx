@@ -47,7 +47,7 @@ export async function BlogPage({ page: pageParam }: BlogPageProps) {
                   <BlurFade delay={BLUR_FADE_DELAY * 3 + id * 0.05} key={slug}>
                     <Link
                       className="flex items-start gap-x-2 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                      href={`/blog/${slug}`}
+                      href={`/posts/${slug}`}
                     >
                       <span className="text-xs font-mono tabular-nums font-medium mt-[5px]">
                         {String(indexNumber).padStart(2, '0')}.
@@ -80,7 +80,7 @@ export async function BlogPage({ page: pageParam }: BlogPageProps) {
                 <div className="flex gap-2 sm:justify-end">
                   {pagination.hasPreviousPage ? (
                     <Link
-                      href={`/blog?page=${pagination.page - 1}`}
+                      href={`/posts?page=${pagination.page - 1}`}
                       className="h-8 w-fit px-2 flex items-center justify-center text-sm border border-border rounded-lg hover:bg-accent/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       Previous
@@ -92,7 +92,7 @@ export async function BlogPage({ page: pageParam }: BlogPageProps) {
                   )}
                   {pagination.hasNextPage ? (
                     <Link
-                      href={`/blog?page=${pagination.page + 1}`}
+                      href={`/posts?page=${pagination.page + 1}`}
                       className="h-8 w-fit px-2 flex items-center justify-center text-sm border border-border rounded-lg hover:bg-accent/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       Next

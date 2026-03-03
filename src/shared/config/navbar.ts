@@ -4,7 +4,7 @@ import { Icons } from '@/shared/ui/icons';
 export const NAVBAR_ITEMS = [
   { href: '/', icon: HomeIcon, label: 'Home' },
   { href: '/projects', icon: CodeIcon, label: 'Projects' },
-  // { href: '/blog', icon: PenLineIcon, label: 'Blog' },
+  { href: '/posts', icon: PenLineIcon, label: 'Posts' },
 ] as const;
 
 export const SOCIAL_LINKS = {

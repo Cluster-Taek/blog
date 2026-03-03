@@ -37,8 +37,8 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
     description: post.summary,
-    image: post.image ? `${DATA.url}${post.image}` : `${DATA.url}/blog/${slug}/opengraph-image`,
-    url: `${DATA.url}/blog/${slug}`,
+    image: post.image ? `${DATA.url}${post.image}` : `${DATA.url}/posts/${slug}/opengraph-image`,
+    url: `${DATA.url}/posts/${slug}`,
     author: {
       '@type': 'Person',
       name: DATA.name,
@@ -47,19 +47,15 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
 
   return (
     <section id="blog">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: jsonLdContent }}
-      />
+      <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: jsonLdContent }} />
       <div className="flex justify-start gap-4 items-center">
         <Link
-          href="/blog"
+          href="/posts"
           className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-lg px-2 py-1 inline-flex items-center gap-1 mb-6 group"
-          aria-label="Back to Blog"
+          aria-label="Back to Posts"
         >
           <ChevronLeft className="size-3 group-hover:-translate-x-px transition-transform" />
-          Back to Blog
+          Back to Posts
         </Link>
       </div>
       <div className="flex flex-col gap-4">
@@ -83,7 +79,7 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
         <div className="flex flex-col sm:flex-row justify-between gap-4">
           {previousPost ? (
             <Link
-              href={`/blog/${getSlug(previousPost)}`}
+              href={`/posts/${getSlug(previousPost)}`}
               className="group flex-1 flex flex-col gap-1 p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors"
             >
               <span className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -100,7 +96,7 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
 
           {nextPost ? (
             <Link
-              href={`/blog/${getSlug(nextPost)}`}
+              href={`/posts/${getSlug(nextPost)}`}
               className="group flex-1 flex flex-col gap-1 p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors text-right"
             >
               <span className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
