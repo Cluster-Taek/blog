@@ -62,7 +62,7 @@ const hackathons: Hackathon[] = [];
 export const DATA = {
   name: 'Seungtaek Yoo',
   initials: 'SY',
-  url: 'https://github.com/Cluster-Taek',
+  url: 'https://dev.cluster-taek.cloud',
   location: 'Seoul, South Korea',
   locationLink: 'https://www.google.com/maps/place/seoul',
   description: (
