@@ -1,7 +1,7 @@
+import Link from 'next/link';
 import { DATA } from '@/shared/config';
 import { BlurFade } from '@/shared/ui/blur-fade';
-import { Dialog, DialogContent, DialogTrigger } from '@/shared/ui/dialog';
-import { ProjectCard, ProjectDetail } from '@/shared/ui/project-card';
+import { ProjectCard } from '@/shared/ui/project-card';
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -31,32 +31,16 @@ export default function ProjectsSection({ maxCount }: ProjectsSectionProps) {
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto auto-rows-fr">
         {projects.map((project, id) => (
           <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 12 + id * 0.05} className="h-full">
-            <Dialog>
-              <DialogTrigger asChild>
-                <ProjectCard
-                  title={project.title}
-                  description={project.description}
-                  dates={project.dates}
-                  tags={project.technologies}
-                  image={project.image}
-                  video={project.video}
-                  links={project.links}
-                />
-              </DialogTrigger>
-              <DialogContent
-                showCloseButton={false}
-                className="flex flex-col h-[90dvh] w-[calc(100%-2rem)] max-w-2xl sm:max-w-2xl p-0 rounded-xl overflow-hidden"
-              >
-                <ProjectDetail
-                  title={project.title}
-                  dates={project.dates}
-                  description={project.description}
-                  tags={project.technologies}
-                  slides={project.slides}
-                  links={project.links}
-                />
-              </DialogContent>
-            </Dialog>
+            <Link href={`/projects/${project.slug}`} className="block h-full">
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                dates={project.dates}
+                tags={project.technologies}
+                image={project.image}
+                video={project.video}
+              />
+            </Link>
           </BlurFade>
         ))}
       </div>

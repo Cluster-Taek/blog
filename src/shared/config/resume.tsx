@@ -258,6 +258,7 @@ export const DATA = {
   projects: [
     {
       title: 'create-next-claude-app',
+      slug: 'create-next-claude-app',
       href: '',
       dates: '2025.06 ~ 진행 중',
       active: true,
@@ -316,6 +317,7 @@ export const DATA = {
     },
     {
       title: '코오롱몰 리뉴얼',
+      slug: 'kolonmall',
       href: '',
       dates: '2024.03 ~ 진행 중',
       active: true,
@@ -375,6 +377,7 @@ export const DATA = {
     },
     {
       title: 'Brandrive',
+      slug: 'brandrive',
       href: '',
       dates: '2022.06 ~ 2024.02',
       active: false,
@@ -454,6 +457,7 @@ export const DATA = {
     },
     {
       title: 'Reabit',
+      slug: 'reabit',
       href: '',
       dates: '2021.09 ~ 2022.05',
       active: false,
@@ -512,6 +516,7 @@ export const DATA = {
     },
     {
       title: '도리보틀',
+      slug: 'doribottle',
       href: '',
       dates: '2024.03 ~ 2025.03',
       active: false,
@@ -552,6 +557,7 @@ export const DATA = {
     },
     {
       title: '연합뉴스 헤드라인 Slack Bot',
+      slug: 'yna-slack-bot',
       href: '',
       dates: '2024',
       active: false,
@@ -579,6 +585,7 @@ export const DATA = {
     },
     {
       title: 'Flutter 연차 캘린더',
+      slug: 'flutter-hr-calendar',
       href: '',
       dates: '2023',
       active: false,
@@ -606,3 +613,7 @@ export const DATA = {
   ],
   hackathons,
 } as const;
+
+export function getProjectBySlug(slug: string) {
+  return DATA.projects.find((p) => p.slug === slug);
+}
