@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { DATA } from '@/shared/config';
 import { formatDate } from '@/shared/lib/utils';
 import { mdxComponents } from '@/shared/ui/mdx';
+import { TableOfContents } from '@/shared/ui/table-of-contents';
 
 function getSortedPosts() {
   return [...allPosts].sort((a, b) => {
@@ -71,9 +72,12 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
           }}
         />
       </div>
-      <article className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-        <MDXContent code={post.mdx} components={mdxComponents} />
-      </article>
+      <div className="relative">
+        <article className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+          <MDXContent code={post.mdx} components={mdxComponents} />
+        </article>
+        <TableOfContents headings={post.headings} />
+      </div>
 
       <nav className="mt-12 pt-8 max-w-2xl">
         <div className="flex flex-col sm:flex-row justify-between gap-4">
