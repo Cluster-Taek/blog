@@ -1,0 +1,187 @@
+---
+title: '앵커 시스템으로 본 Compound Pattern'
+publishedAt: '2026-03-06'
+summary: '기존 앵커 시스템의 강한 결합도와 크로스 브라우징 이슈를 컴파운드 패턴으로 리팩터링한 경험을 공유합니다.'
+image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=192&fit=crop'
+---
+
+프론트엔드 개발을 하다보면 한번씩은 앵커(Anchor) 시스템을 구현할 일이 생깁니다. 단순해 보이지만, 동적으로 렌더링되는 페이지에서 이를 안정적으로 동작시키는 것은 생각보다 까다로운 문제였습니다. 이 글에서는 앵커 시스템을 컴파운드 패턴으로 리팩터링한 경험을 공유합니다.
+
+<MediaContainer src="/project/kolonmall.mp4" type="video" alt="코오롱몰 앵커 시스템 데모" />
+
+---
+
+## 1. 이슈 : 재사용성이 떨어지는 기존 앵커 시스템
+
+기존 앵커 시스템은 특정 페이지 구조에 강하게 결합되어 있었고, 동적 렌더링이 주된 패널 페이지에서는 재사용이 불가능에 가까웠습니다.
+
+- **DOM 직접 조회** `document.getElementById`로 요소를 찾아 스크롤 위치를 계산
+- **복잡한 오프셋 계산** 헤더, 헤더확장영역, 앵커탭 높이를 디바이스별로 매번 개별 계산
+- **수동 상태 관리** 외부에서 `currentValue`를 주입해야 활성 탭이 변경됨
+- **타이머 의존** `setTimeout` 폴링으로 DOM 로딩을 대기
+
+```tsx title="기존 앵커 시스템 (수도 코드)"
+// 스크롤: DOM 직접 조회 + 디바이스별 오프셋 분기
+target = document.getElementById(templateId)
+offset = isMobile ? headerExt + headerH + mobilePx : desktopTabH + 20
+scrollTo(target.top + scrollY - offset)
+
+// 활성 탭: 외부에서 값을 주입해야 동작
+const { renderContent, currentValue } = useAnchorTab({ currentValue: externalValue, autoActiveOnScroll })
+
+// DOM 대기: setTimeout 폴링 (500ms 반복)
+if (!document.getElementById(firstItem)) retry(500ms)
+```
+
+소프트웨어 공학에서 자주 등장하는 **높은 결합도와 낮은 응집도를 가진 코드**의 전형적인 예시였습니다.
+
+## 2. 해결 방향 : 왜 컴파운드 패턴인가?
+
+이 문제를 해결하기 위해 <mark>컴파운드 패턴(Compound Pattern)</mark> 도입을 고려하게 되었습니다.
+
+> Compound Component는 자체적인 내부 상태를 관리하며, 이 상태를 여러 자식 컴포넌트들과 공유합니다. 따라서 우리는 상태 관리에 대해 직접 신경 쓸 필요가 없습니다.
+
+이러한 특징을 활용하면 앵커 시스템에서 겪고 있던 다음과 같은 문제들을 효율적으로 해결할 수 있다고 판단했습니다.
+
+- 페이지마다 앵커 섹션의 **개수와 구성이 다름** (동적 렌더링)
+- 섹션이 마운트/언마운트될 때 **자동으로 등록/해제**되어야 함
+- 활성 탭, 스크롤 이동 등 **상태를 여러 컴포넌트가 공유**해야 함
+
+기존 Props 기반 구조에서는 페이지 컴포넌트가 앵커 데이터를 직접 가공하고, `Scroll Custom Hook`, `Tab Custom Hook`을 각각 연결한 뒤, 계산된 값을 자식에게 내려줘야 했습니다. 앵커 로직이 페이지에 종속되어 다른 페이지에서 재사용할 수 없는 구조였습니다.
+
+컴파운드 패턴을 적용하면 기존 페이지의 앵커 시스템에 대한 관심사가 완전히 분리되고, 앵커 시스템은 내부 컨텐츠에 대해 신경 쓸 필요 없이 독립적으로 동작이 가능해집니다.
+
+## 3. 해결 과정 : 새로운 앵커 시스템 구현
+
+컴파운드 패턴을 활용한 새로운 앵커 시스템은 크게 세 가지의 훅/컴포넌트로 설계했습니다.
+
+1. **AnchorProvider** - 앵커 데이터와 상태를 전역으로 관리하고 하위 컴포넌트에 공유
+2. **AnchorSection** - 섹션이 마운트되면 자동으로 Context에 등록하고, IntersectionObserver로 노출 여부를 감지
+3. **useAnchor** - 활성 앵커 자동 감지와 스크롤 이동용 커스텀 훅
+
+### AnchorProvider
+
+레이아웃 수준에서 설정값만 전달하면 하위 컴포넌트가 자유롭게 앵커 기능을 사용할 수 있습니다.
+
+```tsx title="anchor-provider.tsx"
+const AnchorContext = createContext<IUseAnchorReturn | null>(null);
+
+export const AnchorProvider: React.FC<IAnchorProviderProps> = ({ children, ...anchorOptions }) => {
+  const anchorHook = useAnchor({ ...anchorOptions });
+  return <AnchorContext.Provider value={anchorHook}>{children}</AnchorContext.Provider>;
+};
+
+// 레이아웃에서 설정만 전달하면 끝
+<AnchorProvider
+  data={anchorItems}
+  scrollOffset={80}
+  smooth={true}
+  threshold={[0, 0.5, 1]}
+  rootMargin="-80px 0px 80px 0px"
+>
+  {children}
+</AnchorProvider>;
+```
+
+### 섹션 자동 등록
+
+`<AnchorSection>`으로 감싸기만 하면 마운트 시 자동 등록, 언마운트 시 자동 해제됩니다. IntersectionObserver를 통해 노출 여부도 자동으로 감지합니다.
+
+```tsx title="anchor-section.tsx"
+const AnchorSection: React.FC<IAnchorSectionProps> = React.memo(({ id, children }) => {
+  const [element, setElement] = useState<HTMLElement | null>(null);
+  const {
+    threshold,
+    rootMargin,
+    updateSectionVisibility,
+    registerSection,
+    unregisterSection,
+    setFirstAnchorScrollTop,
+    data,
+  } = useAnchorContext();
+
+  // IntersectionObserver로 노출 여부 자동 감지
+  const { ref: inViewRef } = useInView({
+    threshold: threshold || 0.5,
+    rootMargin: rootMargin || '0px',
+    onChange: (inView) => updateSectionVisibility(id, inView),
+  });
+
+  // 마운트 시 자동 등록, 언마운트 시 자동 해제
+  useEffect(() => {
+    if (element) {
+      registerSection(id, element);
+      return () => unregisterSection(id);
+    }
+  }, [element, id]);
+
+  return <section ref={setRef}>{children}</section>;
+});
+```
+
+### 스크롤 이동 + 활성 탭 자동 감지
+
+Ref Map에서 바로 요소를 조회하고 단일 오프셋만 적용하면 됩니다. 활성 앵커는 현재 노출된 섹션 중 가장 위에 있는 것을 자동으로 선택하도록 설계했습니다
+
+```tsx title="use-anchor.ts"
+// 활성 앵커: 현재 노출된 섹션 중 가장 위에 있는 것을 자동 선택
+const updateActiveAnchor = useCallback(() => {
+  const visibleSections = Array.from(sectionsRef.current.values())
+    .filter((section) => visibilityRef.current.get(section.id))
+    .sort((a, b) => a.element.getBoundingClientRect().top - b.element.getBoundingClientRect().top);
+
+  if (visibleSections.length > 0) {
+    setActiveAnchor(visibleSections[0].id);
+  }
+}, [activeAnchor]);
+
+// 스크롤: Ref Map에서 바로 조회, 단일 오프셋 적용
+const scrollToAnchor = useCallback(
+  (anchorId: string) => {
+    const section = sectionsRef.current.get(anchorId);
+    if (!section) return;
+
+    const elementTop = section.element.offsetTop - scrollOffsetRef.current;
+    window.scrollTo({ top: elementTop, behavior: 'smooth' });
+  },
+  [smooth]
+);
+```
+
+### 탭 UI
+
+탭 컴포넌트는 Context에서 모든 상태를 가져오기 때문에 외부 주입이 불필요합니다.
+
+```tsx title="desktop-panel-anchor-tab.tsx"
+const DesktopPanelAnchorTab = () => {
+  const { data, activeAnchor, scrollToAnchor } = useAnchorContext();
+
+  return (
+    <HStack>
+      {data.map(({ name, id }) => (
+        <Box key={id} className={tabCva({ active: activeAnchor === id })} onClick={() => scrollToAnchor(id)}>
+          {name}
+        </Box>
+      ))}
+    </HStack>
+  );
+};
+```
+
+## 4. 마무리 및 성과
+
+|                           | AS-IS                                       | TO-BE                                          |
+| ------------------------- | ------------------------------------------- | ---------------------------------------------- |
+| **상태 관리**             | 페이지 컴포넌트가 직접 관리 (3개 훅 조합)   | `AnchorProvider` Context 일괄 관리             |
+| **요소 탐색**             | `document.getElementById` 탐색              | `sectionsRef.get(id)` Ref Map 조회             |
+| **오프셋 계산**           | 디바이스별 다단 분기                        | `offsetTop - scrollOffset` 단일 값             |
+| **활성 탭 감지**          | 부모 state에서 props 전달                   | Context 내부에서 자체 완결                     |
+| **클릭 스크롤 충돌**      | wheel/touchmove 리스너                      | IntersectionObserver 기반으로 별도 처리 불필요 |
+| **DOM 로딩 대기**         | `setTimeout(500ms)` 폴링 + 실패 시 재시도   | `useEffect` + ref 콜백 즉시 수신               |
+| **새 페이지에 앵커 추가** | 스크롤 로직, 오프셋, 탭 상태 훅을 각각 연결 | `AnchorProvider` 래핑 + `AnchorSection` 태깅   |
+
+앵커 관련 로직이 Context 안에 캡슐화되면서, 패널만이 아닌 모든 페이지에서 유동적으로 앵커 시스템을 사용할 수 있도록 개선되었습니다.
+
+참고 자료
+
+- https://www.patterns.dev/react/compound-pattern/
