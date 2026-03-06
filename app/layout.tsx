@@ -1,5 +1,6 @@
 import './globals.css';
 import 'dayjs/locale/ko';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import dayjs from 'dayjs';
 import { type Metadata } from 'next';
 import localFont from 'next/font/local';
@@ -93,6 +94,7 @@ export default function RootLayout({
           <Modal components={MODAL_COMPONENTS} />
           <Navbar />
         </CoreProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
