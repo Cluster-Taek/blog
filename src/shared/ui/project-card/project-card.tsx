@@ -25,6 +25,7 @@ interface ProjectCardProps {
   description: string;
   dates: string;
   tags: readonly string[];
+  category?: 'work' | 'side';
   image?: string;
   video?: string;
   links?: readonly {
@@ -35,8 +36,13 @@ interface ProjectCardProps {
   className?: string;
 }
 
+const CATEGORY_CONFIG = {
+  side: { label: 'Side Project', className: 'text-violet-600 dark:text-violet-300' },
+  work: { label: 'Work', className: 'text-blue-600 dark:text-blue-300' },
+} as const;
+
 export const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(function ProjectCard(
-  { title, description, dates, tags, image, video, links, className, ...props },
+  { title, description, dates, tags, category, image, video, links, className, ...props },
   ref
 ) {
   return (
@@ -62,6 +68,11 @@ export const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(function
       <div className="p-4 flex flex-col gap-3 flex-1">
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
+            {category && (
+              <span className={cn('text-[11px] font-semibold', CATEGORY_CONFIG[category].className)}>
+                {CATEGORY_CONFIG[category].label}
+              </span>
+            )}
             <h3 className="font-semibold">{title}</h3>
             <time className="text-xs text-muted-foreground">{dates}</time>
           </div>

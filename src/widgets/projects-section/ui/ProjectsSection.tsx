@@ -37,6 +37,7 @@ export default function ProjectsSection({ maxCount }: ProjectsSectionProps) {
                 description={project.description}
                 dates={project.dates}
                 tags={project.technologies}
+                category={project.category}
                 image={project.image}
                 video={project.video}
               />

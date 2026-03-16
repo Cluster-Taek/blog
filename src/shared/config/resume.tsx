@@ -26,6 +26,8 @@ interface ProjectLink {
   icon: ReactNode;
 }
 
+type ProjectCategory = 'work' | 'side';
+
 interface ProjectSlide {
   image?: string;
   video?: string;
@@ -257,70 +259,12 @@ export const DATA = {
   ],
   projects: [
     {
-      title: 'create-next-claude-app',
-      slug: 'create-next-claude-app',
-      href: '',
-      dates: '2025.06 ~ 진행 중',
-      active: true,
-      description:
-        'Claude Code + FSD 아키텍처 기반 Next.js 프로젝트 스캐폴딩 CLI. TDD 워크플로우와 LLM 친화적 구조를 자동 세팅하여 개발 생산성을 극대화하는 오픈소스 도구.',
-      technologies: ['Node.js', 'TypeScript', 'Claude Code', 'FSD', 'npm'],
-      links: [
-        {
-          type: 'GitHub',
-          href: 'https://github.com/Cluster-Taek/create-next-claude-app',
-          icon: <Icons.github className="size-4" />,
-        },
-      ] satisfies ProjectLink[],
-      image: '/project/create-next-claude-app.png',
-      video: '',
-      slides: [
-        {
-          image: '/project/create-next-claude-app_main.png',
-          description: (
-            <div className="space-y-2">
-              <p className="font-semibold text-foreground">FSD 아키텍처로 LLM 토큰 최적화</p>
-              <p>
-                <strong>Feature-Sliced Design</strong> 아키텍처를 적용하여 LLM이 코드 맥락을 파악할 때 토큰 사용을
-                최적화했습니다. 레이어별 명확한 경계와 의존성 관리로 코드 탐색 범위를 최소화합니다.
-              </p>
-            </div>
-          ),
-        },
-        {
-          image: '/project/create-next-claude-app.png',
-          description: (
-            <div className="space-y-2">
-              <p className="font-semibold text-foreground">TDD 기반 Claude Skill 워크플로우</p>
-              <p>
-                <strong>/tdd → /fsd → 구현 → /review → /commit</strong> 프로세스를 Claude Code Skills로 내장했습니다.
-                요구사항에서 테스트 코드를 먼저 생성하고(Red), FSD 슬라이스를 스캐폴딩한 뒤 구현하는 흐름으로 개발
-                생산성을 극대화합니다.
-              </p>
-            </div>
-          ),
-        },
-        {
-          video: '/project/create-next-claude-app_cli.mp4',
-          description: (
-            <div className="space-y-2">
-              <p className="font-semibold text-foreground">CLI 기반 프로젝트 스캐폴딩</p>
-              <p>
-                <strong>npx create-next-claude-app my-app</strong> 한 줄로 Next.js 16 + FSD 아키텍처 보일러플레이트를
-                즉시 생성합니다. Zustand, TanStack Query, React Hook Form + Zod, NextAuth.js 등 실무에서 검증된 스택이
-                기본 세팅됩니다.
-              </p>
-            </div>
-          ),
-        },
-      ] satisfies ProjectSlide[],
-    },
-    {
       title: '코오롱몰 리뉴얼',
       slug: 'kolonmall',
       href: '',
       dates: '2024.03 ~ 진행 중',
       active: true,
+      category: 'work',
       description:
         '통합 이커머스 코오롱몰의 전시영역 전체 리뉴얼. 컴파운드 패턴 기반 앵커 시스템으로 재사용성 향상, Mixpanel 이벤트 파편화 해소(88% 파일 감소), 슬라이딩 윈도우 전략으로 번들 로드 시간 57% 단축.',
       technologies: ['Next.js', 'React', 'TypeScript', 'Mixpanel', 'Swiper.js'],
@@ -381,6 +325,7 @@ export const DATA = {
       href: '',
       dates: '2022.06 ~ 2024.02',
       active: false,
+      category: 'work',
       description:
         'Google Drive를 레퍼런스로 한 B2B SaaS 디지털 에셋 관리 플랫폼. 대용량 파일 다중 다운로드, Multi-Tenant 권한 관리, EKS 기반 블루/그린 배포 적용.',
       technologies: ['React', 'TypeScript', 'Context API', 'EKS', 'Kubernetes', 'CloudWatch', 'Helm'],
@@ -456,11 +401,147 @@ export const DATA = {
       ] satisfies ProjectSlide[],
     },
     {
+      title: 'create-next-claude-app',
+      slug: 'create-next-claude-app',
+      href: '',
+      dates: '2025.06 ~ 진행 중',
+      active: true,
+      category: 'side',
+      description:
+        'Claude Code + FSD 아키텍처 기반 Next.js 프로젝트 스캐폴딩 CLI. TDD 워크플로우와 LLM 친화적 구조를 자동 세팅하여 개발 생산성을 극대화하는 오픈소스 도구.',
+      technologies: ['Node.js', 'TypeScript', 'Claude Code', 'FSD', 'npm'],
+      links: [
+        {
+          type: 'GitHub',
+          href: 'https://github.com/Cluster-Taek/create-next-claude-app',
+          icon: <Icons.github className="size-4" />,
+        },
+      ] satisfies ProjectLink[],
+      image: '/project/create-next-claude-app.png',
+      video: '',
+      slides: [
+        {
+          image: '/project/create-next-claude-app_main.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">FSD 아키텍처로 LLM 토큰 최적화</p>
+              <p>
+                <strong>Feature-Sliced Design</strong> 아키텍처를 적용하여 LLM이 코드 맥락을 파악할 때 토큰 사용을
+                최적화했습니다. 레이어별 명확한 경계와 의존성 관리로 코드 탐색 범위를 최소화합니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          image: '/project/create-next-claude-app.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">TDD 기반 Claude Skill 워크플로우</p>
+              <p>
+                <strong>/tdd → /fsd → 구현 → /review → /commit</strong> 프로세스를 Claude Code Skills로 내장했습니다.
+                요구사항에서 테스트 코드를 먼저 생성하고(Red), FSD 슬라이스를 스캐폴딩한 뒤 구현하는 흐름으로 개발
+                생산성을 극대화합니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          video: '/project/create-next-claude-app_cli.mp4',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">CLI 기반 프로젝트 스캐폴딩</p>
+              <p>
+                <strong>npx create-next-claude-app my-app</strong> 한 줄로 Next.js 16 + FSD 아키텍처 보일러플레이트를
+                즉시 생성합니다. Zustand, TanStack Query, React Hook Form + Zod, NextAuth.js 등 실무에서 검증된 스택이
+                기본 세팅됩니다.
+              </p>
+            </div>
+          ),
+        },
+      ] satisfies ProjectSlide[],
+    },
+    {
+      title: 'JavaScript Engine Simulator',
+      slug: 'javascript-engine',
+      href: '',
+      dates: '2025.03 ~ 진행 중',
+      active: true,
+      category: 'side',
+      description:
+        'JavaScript 실행 과정을 시각화하는 인터랙티브 교육 도구. Tokenizer → Parser → Interpreter 파이프라인을 직접 구현하고, 엔진·클로저·this 바인딩·이벤트 전파 4가지 시뮬레이터로 런타임 동작을 단계별로 시각화.',
+      technologies: ['Next.js', 'React', 'TypeScript', 'Zustand', 'Monaco Editor', 'Motion', 'FSD'],
+      links: [
+        {
+          type: 'GitHub',
+          href: 'https://github.com/Cluster-Taek/javascript-engine-simulator',
+          icon: <Icons.github className="size-4" />,
+        },
+      ] satisfies ProjectLink[],
+      image: '/project/javascript-engine.png',
+      video: '',
+      slides: [
+        {
+          image: '/project/javascript-engine_engine.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">엔진 시뮬레이터 — Sync & Async 실행 시각화</p>
+              <p>
+                순수 TypeScript로 구현한 <strong>Tokenizer → Parser → Generator 기반 Interpreter</strong> 파이프라인으로
+                JavaScript 코드의 토큰, AST, Call Stack, Scope Chain을 단계별로 시각화합니다. Async 모드에서는{' '}
+                <strong>Web APIs, Task Queue, Microtask Queue, Event Loop</strong>까지 완전한 비동기 런타임을
+                시뮬레이션합니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          image: '/project/javascript-engine_closure.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">클로저 시뮬레이터 — 힙 메모리 & GC 시각화</p>
+              <p>
+                클로저가 캡처하는 환경 객체의 <strong>생성(Active) → 유지(Retained) → 해제(Collected)</strong>{' '}
+                생명주기를 힙 메모리 관점에서 시각화합니다. Scope Chain과 Closure Reference를 추적하여 GC가 어떤 환경을
+                수거하는지 직관적으로 보여줍니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          image: '/project/javascript-engine_this.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">this 바인딩 시뮬레이터 — 5가지 바인딩 규칙 시각화</p>
+              <p>
+                <strong>new · implicit · default · arrow · lost</strong> 5가지 this 바인딩 규칙을 실시간으로 감지하고
+                소스코드에 색상 코딩으로 표시합니다. 각 함수 호출 시점에서 this가 어떤 규칙으로 결정되는지 단계별로
+                확인할 수 있습니다.
+              </p>
+            </div>
+          ),
+        },
+        {
+          image: '/project/javascript-engine_event.png',
+          description: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">이벤트 시뮬레이터 — DOM 이벤트 전파 시각화</p>
+              <p>
+                인터랙티브 <strong>DOM 트리 빌더</strong>로 노드를 구성하고, 이벤트가{' '}
+                <strong>Capturing → Target → Bubbling</strong> 단계를 거쳐 전파되는 과정을 애니메이션으로 시각화합니다.
+                이벤트 리스너 등록과 트리거를 동적으로 관리할 수 있습니다.
+              </p>
+            </div>
+          ),
+        },
+      ] satisfies ProjectSlide[],
+    },
+    {
       title: 'Reabit',
       slug: 'reabit',
       href: '',
       dates: '2021.09 ~ 2022.05',
       active: false,
+      category: 'work',
       description:
         'Upbit Open API 기반 카피 트레이딩 플랫폼. 리더 트레이더의 거래를 자동 팔로우하는 시스템. MVP 2주 만에 플레이스토어 등록 및 오픈.',
       technologies: ['React Native', 'Express.js', 'Upbit API', 'MySQL'],
@@ -520,6 +601,7 @@ export const DATA = {
       href: '',
       dates: '2024.03 ~ 2025.03',
       active: false,
+      category: 'side',
       description:
         '예비 창업 패키지 선정. 친환경 리유저블 컵 대여 플랫폼. Webview + PWA로 잦은 수정에 유연하게 대응. EKS 인프라를 Vercel Serverless로 마이그레이션하여 월 서버비 $80 → $0 절감.',
       technologies: ['Next.js', 'PWA', 'Toss Payment API', 'Vercel', 'Redis', 'OneSignal'],
@@ -561,6 +643,7 @@ export const DATA = {
       href: '',
       dates: '2024',
       active: false,
+      category: 'side',
       description:
         'Lambda + EventBridge를 활용한 연합뉴스 실시간 헤드라인 Slack Bot. Serverless 아키텍처로 스케줄링된 뉴스 수집 및 Slack 채널 자동 전송.',
       technologies: ['AWS Lambda', 'EventBridge', 'Slack API', 'Node.js'],
@@ -589,6 +672,7 @@ export const DATA = {
       href: '',
       dates: '2023',
       active: false,
+      category: 'side',
       description:
         'iOS 기본 캘린더를 레퍼런스로 한 무한 스크롤 연차 캘린더 및 신청 앱. 사내 연차 관리 편의를 위해 개발.',
       technologies: ['Flutter', 'Dart', 'iOS', 'Android'],
