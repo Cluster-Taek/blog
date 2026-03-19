@@ -161,7 +161,7 @@ export const DATA = {
       location: 'Seoul',
       title: 'Frontend Developer',
       logoUrl: '/purpleworks.webp',
-      start: '2022.06.22',
+      start: '2022-06-22',
       end: undefined as string | undefined,
       description: (
         <div className="space-y-2">
@@ -224,8 +224,8 @@ export const DATA = {
       location: 'Seoul',
       title: 'Application / Server Developer',
       logoUrl: '',
-      start: '2021.09.01',
-      end: '2022.05.31',
+      start: '2021-09-01',
+      end: '2022-05-31',
       description: (
         <ul className="list-disc list-outside pl-4 space-y-1">
           <li>업비트 API를 활용한 가상화폐 스타트업 창업</li>
