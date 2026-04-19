@@ -155,6 +155,41 @@ export const DATA = {
   },
   work: [
     {
+      company: 'Paymint',
+      href: '',
+      badges: ['Fin-Tech'],
+      location: 'Seoul',
+      title: 'Frontend Developer',
+      logoUrl: '/paymint_logo.png',
+      start: '2026-04-13',
+      end: undefined as string | undefined,
+      description: (
+        <div className="space-y-2">
+          <div className="space-y-1">
+            <p className="font-semibold">[Devops Team]</p>
+            <ul className="list-disc list-outside pl-4 space-y-1">
+              {/* <li>
+                통합 이커머스{' '}
+                <a
+                  href="https://www.kolonmall.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-semibold underline"
+                >
+                  Kolon Mall
+                </a>{' '}
+                전시 영역 리뉴얼 및 유지 보수
+              </li>
+              <li>전시 영역의 동적 패널 및 컴포넌트 시스템 설계 참여 및 구현</li>
+              <li>공통 모듈 동적 앵커 시스템 구현</li>
+              <li>데스크탑, 모바일, 어플리케이션에서 WebView 및 크로스 브라우징 이슈 대응</li>
+              <li>Mixpanel을 활용한 재사용 가능한 데이터 트래킹 모듈 구현</li> */}
+            </ul>
+          </div>
+        </div>
+      ),
+    },
+    {
       company: 'PurpleWorks',
       href: '',
       badges: ['E-Commerce', 'B2B SaaS'],
@@ -162,7 +197,7 @@ export const DATA = {
       title: 'Frontend Developer',
       logoUrl: '/purpleworks.webp',
       start: '2022-06-22',
-      end: undefined as string | undefined,
+      end: '2026-04-10',
       description: (
         <div className="space-y-2">
           <div className="space-y-1">
