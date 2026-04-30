@@ -1,4 +1,5 @@
-import  { type ComponentProps } from 'react';
+import { type ComponentProps } from 'react';
+import { ColorBadge, type ColorBadgeProps } from '@/shared/ui/badge';
 import { CodeBlock } from './code-block';
 import { MediaContainer } from './media-container';
 
@@ -8,6 +9,7 @@ type CodeProps = ComponentProps<'code'> & {
 
 export const mdxComponents = {
   MediaContainer,
+  Badge: (props: ColorBadgeProps) => <ColorBadge {...props} />,
   pre: (props: ComponentProps<'pre'>) => <CodeBlock {...props} />,
   hr: (props: ComponentProps<'hr'>) => (
     <div className="my-10 flex w-full items-center" {...props}>
@@ -32,7 +34,10 @@ export const mdxComponents = {
       return <code {...props}>{children}</code>;
     }
     return (
-      <code className="px-1.5 py-0.5 rounded-md bg-muted/60 dark:bg-muted/40 text-sm font-mono text-foreground/90" {...props}>
+      <code
+        className="px-1.5 py-0.5 rounded-md bg-muted/60 dark:bg-muted/40 text-sm font-mono text-foreground/90"
+        {...props}
+      >
         {children}
       </code>
     );
